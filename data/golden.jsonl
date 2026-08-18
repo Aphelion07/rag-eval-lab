@@ -1,0 +1,40 @@
+{"query_id": "q01", "text": "How do I turn on two-factor authentication?", "relevance": {"two-factor-auth": 2, "authentication": 1}}
+{"query_id": "q02", "text": "What is the process for switching off my second login factor?", "relevance": {"two-factor-auth": 2}}
+{"query_id": "q03", "text": "How can I make sure a stolen password is not enough to log in?", "relevance": {"two-factor-auth": 2, "authentication": 1}}
+{"query_id": "q04", "text": "How do I stop an attacker who guessed my credentials from getting in?", "relevance": {"two-factor-auth": 2, "authentication": 1}}
+{"query_id": "q05", "text": "What port does SSH use?", "relevance": {"ssh": 2, "tcp": 1}}
+{"query_id": "q06", "text": "Which port is 443 and which is 80?", "relevance": {"tcp": 2}}
+{"query_id": "q07", "text": "What does A01 in the OWASP Top 10 cover?", "relevance": {"owasp-top-ten": 2, "authorization": 1}}
+{"query_id": "q08", "text": "What is AES-GCM used for?", "relevance": {"symmetric-encryption": 2}}
+{"query_id": "q09", "text": "What does strcpy have to do with security?", "relevance": {"buffer-overflow": 2}}
+{"query_id": "q10", "text": "What is SameSite on a cookie?", "relevance": {"csrf": 2}}
+{"query_id": "q11", "text": "What is symmetric encryption?", "relevance": {"symmetric-encryption": 2, "asymmetric-encryption": 1}}
+{"query_id": "q12", "text": "What is asymmetric encryption?", "relevance": {"asymmetric-encryption": 2, "symmetric-encryption": 1}}
+{"query_id": "q13", "text": "What is the difference between authentication and authorization?", "relevance": {"authentication": 2, "authorization": 2}}
+{"query_id": "q14", "text": "What is SQL injection?", "relevance": {"sql-injection": 2, "command-injection": 1}}
+{"query_id": "q15", "text": "What is command injection?", "relevance": {"command-injection": 2, "sql-injection": 1}}
+{"query_id": "q16", "text": "Explain TCP", "relevance": {"tcp": 2, "udp": 1}}
+{"query_id": "q17", "text": "Explain UDP", "relevance": {"udp": 2, "tcp": 1}}
+{"query_id": "q18", "text": "What is a race condition?", "relevance": {"race-condition": 2, "deadlock": 1}}
+{"query_id": "q19", "text": "What is a deadlock?", "relevance": {"deadlock": 2, "race-condition": 1}}
+{"query_id": "q20", "text": "What is XSS?", "relevance": {"xss": 2, "csrf": 1}}
+{"query_id": "q21", "text": "What is CSRF?", "relevance": {"csrf": 2, "xss": 1}}
+{"query_id": "q22", "text": "What are the three properties information security protects?", "relevance": {"cia-triad": 2}}
+{"query_id": "q23", "text": "Why should a service not run as root?", "relevance": {"least-privilege": 2, "defense-in-depth": 1}}
+{"query_id": "q24", "text": "How do I limit the damage when a system is compromised?", "relevance": {"least-privilege": 2, "defense-in-depth": 2, "zero-trust": 1}}
+{"query_id": "q25", "text": "Why is being on the internal network not enough to be trusted?", "relevance": {"zero-trust": 2}}
+{"query_id": "q26", "text": "How do layered security controls work together?", "relevance": {"defense-in-depth": 2, "zero-trust": 1}}
+{"query_id": "q27", "text": "How do I safely rotate credentials without downtime?", "relevance": {"api-key-rotation": 2}}
+{"query_id": "q28", "text": "What makes a password reset link secure?", "relevance": {"password-reset": 2}}
+{"query_id": "q29", "text": "How do I stop untrusted input from changing my database query?", "relevance": {"sql-injection": 2}}
+{"query_id": "q30", "text": "How do I avoid passing user input to a shell?", "relevance": {"command-injection": 2}}
+{"query_id": "q31", "text": "What should I do about repeated failed logins from one address?", "relevance": {"logging-monitoring": 2, "authentication": 1}}
+{"query_id": "q32", "text": "How does TLS establish a secure connection?", "relevance": {"tls-handshake": 2, "asymmetric-encryption": 1}}
+{"query_id": "q33", "text": "What is forward secrecy?", "relevance": {"tls-handshake": 2}}
+{"query_id": "q34", "text": "Why do protocols use public key crypto and then switch to a block cipher?", "relevance": {"asymmetric-encryption": 2, "symmetric-encryption": 2, "tls-handshake": 1}}
+{"query_id": "q35", "text": "What happens during a three way handshake?", "relevance": {"tcp": 2}}
+{"query_id": "q36", "text": "Why does QUIC run on top of UDP?", "relevance": {"udp": 2, "tcp": 1}}
+{"query_id": "q37", "text": "An API checks the session but not who owns the record. What is that?", "relevance": {"authorization": 2, "owasp-top-ten": 1}}
+{"query_id": "q38", "text": "Why is checking a balance and then withdrawing unsafe under load?", "relevance": {"race-condition": 2}}
+{"query_id": "q39", "text": "What stops an attacker from erasing evidence of an intrusion?", "relevance": {"logging-monitoring": 2}}
+{"query_id": "q40", "text": "Why does writing past the end of an array let someone run code?", "relevance": {"buffer-overflow": 2}}

@@ -1,0 +1,218 @@
+[
+  {
+    "config": "fixed+bm25",
+    "chunker": "fixed(size=512,overlap=64)",
+    "retriever": "bm25(k1=1.5,b=0.75)",
+    "chunks": 49,
+    "recall": 0.8542,
+    "recall_ci": [
+      0.7792,
+      0.925
+    ],
+    "precision": 0.27,
+    "mrr": 0.8975,
+    "ndcg": 0.8411,
+    "hit_rate": 1.0,
+    "index_s": 0.001,
+    "query_p50_ms": 0.02,
+    "query_p95_ms": 0.03
+  },
+  {
+    "config": "fixed+dense",
+    "chunker": "fixed(size=512,overlap=64)",
+    "retriever": "dense(ollama:nomic-embed-text)",
+    "chunks": 49,
+    "recall": 0.8333,
+    "recall_ci": [
+      0.7208,
+      0.925
+    ],
+    "precision": 0.275,
+    "mrr": 0.88,
+    "ndcg": 0.8389,
+    "hit_rate": 0.9,
+    "index_s": 0.42,
+    "query_p50_ms": 0.03,
+    "query_p95_ms": 0.08
+  },
+  {
+    "config": "fixed+hybrid",
+    "chunker": "fixed(size=512,overlap=64)",
+    "retriever": "hybrid(bm25+dense,k=60)",
+    "chunks": 49,
+    "recall": 0.8833,
+    "recall_ci": [
+      0.8042,
+      0.95
+    ],
+    "precision": 0.285,
+    "mrr": 0.9146,
+    "ndcg": 0.8747,
+    "hit_rate": 0.975,
+    "index_s": 0.001,
+    "query_p50_ms": 0.08,
+    "query_p95_ms": 0.1
+  },
+  {
+    "config": "sentence+bm25",
+    "chunker": "sentence(size=512,overlap=64)",
+    "retriever": "bm25(k1=1.5,b=0.75)",
+    "chunks": 48,
+    "recall": 0.8667,
+    "recall_ci": [
+      0.7958,
+      0.9292
+    ],
+    "precision": 0.275,
+    "mrr": 0.9008,
+    "ndcg": 0.8498,
+    "hit_rate": 1.0,
+    "index_s": 0.001,
+    "query_p50_ms": 0.02,
+    "query_p95_ms": 0.06
+  },
+  {
+    "config": "sentence+dense",
+    "chunker": "sentence(size=512,overlap=64)",
+    "retriever": "dense(ollama:nomic-embed-text)",
+    "chunks": 48,
+    "recall": 0.8667,
+    "recall_ci": [
+      0.7625,
+      0.95
+    ],
+    "precision": 0.29,
+    "mrr": 0.8646,
+    "ndcg": 0.8527,
+    "hit_rate": 0.925,
+    "index_s": 0.299,
+    "query_p50_ms": 0.03,
+    "query_p95_ms": 0.05
+  },
+  {
+    "config": "sentence+hybrid",
+    "chunker": "sentence(size=512,overlap=64)",
+    "retriever": "hybrid(bm25+dense,k=60)",
+    "chunks": 48,
+    "recall": 0.8708,
+    "recall_ci": [
+      0.775,
+      0.95
+    ],
+    "precision": 0.28,
+    "mrr": 0.9187,
+    "ndcg": 0.8764,
+    "hit_rate": 0.95,
+    "index_s": 0.001,
+    "query_p50_ms": 0.08,
+    "query_p95_ms": 0.25
+  },
+  {
+    "config": "recursive+bm25",
+    "chunker": "recursive(size=512,overlap=64)",
+    "retriever": "bm25(k1=1.5,b=0.75)",
+    "chunks": 50,
+    "recall": 0.8667,
+    "recall_ci": [
+      0.7958,
+      0.9292
+    ],
+    "precision": 0.275,
+    "mrr": 0.8996,
+    "ndcg": 0.8424,
+    "hit_rate": 1.0,
+    "index_s": 0.001,
+    "query_p50_ms": 0.02,
+    "query_p95_ms": 0.03
+  },
+  {
+    "config": "recursive+dense",
+    "chunker": "recursive(size=512,overlap=64)",
+    "retriever": "dense(ollama:nomic-embed-text)",
+    "chunks": 50,
+    "recall": 0.8667,
+    "recall_ci": [
+      0.7625,
+      0.95
+    ],
+    "precision": 0.29,
+    "mrr": 0.8625,
+    "ndcg": 0.8498,
+    "hit_rate": 0.925,
+    "index_s": 0.196,
+    "query_p50_ms": 0.03,
+    "query_p95_ms": 0.09
+  },
+  {
+    "config": "recursive+hybrid",
+    "chunker": "recursive(size=512,overlap=64)",
+    "retriever": "hybrid(bm25+dense,k=60)",
+    "chunks": 50,
+    "recall": 0.8833,
+    "recall_ci": [
+      0.8042,
+      0.95
+    ],
+    "precision": 0.285,
+    "mrr": 0.9113,
+    "ndcg": 0.8702,
+    "hit_rate": 0.975,
+    "index_s": 0.001,
+    "query_p50_ms": 0.08,
+    "query_p95_ms": 0.1
+  },
+  {
+    "config": "paragraph+bm25",
+    "chunker": "paragraph",
+    "retriever": "bm25(k1=1.5,b=0.75)",
+    "chunks": 119,
+    "recall": 0.8917,
+    "recall_ci": [
+      0.825,
+      0.95
+    ],
+    "precision": 0.285,
+    "mrr": 0.9042,
+    "ndcg": 0.8599,
+    "hit_rate": 1.0,
+    "index_s": 0.001,
+    "query_p50_ms": 0.04,
+    "query_p95_ms": 0.06
+  },
+  {
+    "config": "paragraph+dense",
+    "chunker": "paragraph",
+    "retriever": "dense(ollama:nomic-embed-text)",
+    "chunks": 119,
+    "recall": 0.9083,
+    "recall_ci": [
+      0.8292,
+      0.975
+    ],
+    "precision": 0.295,
+    "mrr": 0.9208,
+    "ndcg": 0.8922,
+    "hit_rate": 0.975,
+    "index_s": 0.687,
+    "query_p50_ms": 0.03,
+    "query_p95_ms": 0.08
+  },
+  {
+    "config": "paragraph+hybrid",
+    "chunker": "paragraph",
+    "retriever": "hybrid(bm25+dense,k=60)",
+    "chunks": 119,
+    "recall": 0.8917,
+    "recall_ci": [
+      0.8125,
+      0.9583
+    ],
+    "precision": 0.285,
+    "mrr": 0.9437,
+    "ndcg": 0.8951,
+    "hit_rate": 0.975,
+    "index_s": 0.002,
+    "query_p50_ms": 0.12,
+    "query_p95_ms": 0.52
+  }
+]

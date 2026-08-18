@@ -195,9 +195,9 @@ Metric expectations are worked out by hand in comments — a metric test that co
 
 ```python
 def test_inverted_ordering_scores_below_one(self) -> None:
-    """DCG  = 1/log2(2) + 2/log2(3) = 1.0 + 1.2619 = 2.2619
-       IDCG = 2/log2(2) + 1/log2(3) = 2.0 + 0.6309 = 2.6309
-       nDCG = 2.2619 / 2.6309 = 0.8598"""
+    # DCG  = 1/log2(2) + 2/log2(3) = 1.0 + 1.2619 = 2.2619
+    # IDCG = 2/log2(2) + 1/log2(3) = 2.0 + 0.6309 = 2.6309
+    # nDCG = 2.2619 / 2.6309 = 0.8598
     assert ndcg_at_k(["b", "a"], {"a": 2.0, "b": 1.0}, 2) == pytest.approx(0.8598, abs=1e-4)
 ```
 

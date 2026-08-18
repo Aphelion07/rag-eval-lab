@@ -33,6 +33,34 @@ class TestArgumentParsing:
     def test_options_still_work_before_the_subcommand(self, data_dir: Path) -> None:
         assert cli.main(["--data", str(data_dir), "--embedder", "hashing", "run", "-k", "3"]) == 0
 
+    @pytest.mark.parametrize(
+        "argv",
+        [
+            ["run", "--embedder", "hashing"],
+            ["--embedder", "hashing", "run"],
+        ],
+        ids=["after-subcommand", "before-subcommand"],
+    )
+    def test_embedder_choice_reaches_the_command(
+        self, argv: list[str], monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        """Assert on the parsed namespace, not on the run succeeding.
+
+        The original version of this test only checked the exit code, which
+        passed on any machine with Ollama running even while the option was
+        being silently discarded - the subparser's default overwrote it. CI
+        caught it; a laptop with a local daemon never would.
+        """
+        captured: dict[str, object] = {}
+
+        def spy(args: object) -> int:
+            captured["embedder"] = args.embedder  # type: ignore[attr-defined]
+            return 0
+
+        monkeypatch.setattr(cli, "_run", spy)
+        assert cli.main(argv) == 0
+        assert captured["embedder"] == "hashing"
+
     def test_rejects_an_unknown_embedder(self) -> None:
         with pytest.raises(SystemExit):
             cli.main(["run", "--embedder", "magic"])

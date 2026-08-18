@@ -146,27 +146,50 @@ def _inspect(args: argparse.Namespace) -> int:
     return 0
 
 
-def main(argv: list[str] | None = None) -> int:
-    # Shared options live on a parent parser so they work *after* the
-    # subcommand too. Putting them only on the top-level parser forces
-    # `rag-eval --embedder hashing run`, which nobody guesses correctly.
-    common = argparse.ArgumentParser(add_help=False)
-    common.add_argument("--data", default=str(DEFAULT_DATA), help="data directory")
-    common.add_argument("--embedder", default="ollama", choices=["ollama", "hashing"])
-    common.add_argument("--model", default="nomic-embed-text")
-    common.add_argument("--chunk-size", type=int, default=512)
-    common.add_argument("--overlap", type=int, default=64)
-    common.add_argument("-k", type=int, default=5, help="documents retrieved per query")
+def add_shared_options(parser: argparse.ArgumentParser, *, defaults: bool) -> None:
+    """Attach the options every subcommand accepts.
 
-    parser = argparse.ArgumentParser(prog="rag-eval", description=__doc__, parents=[common])
+    Called twice: once on the top-level parser with real defaults, and once per
+    subparser with ``default=SUPPRESS``.
+
+    The SUPPRESS half is not cosmetic. argparse runs the top-level parser first
+    and the subparser second, into the *same* namespace - so a subparser default
+    silently overwrites a value the user supplied before the subcommand.
+    `rag-eval --embedder hashing run` would quietly fall back to the ollama
+    default and try to reach a daemon that may not exist. SUPPRESS leaves the
+    attribute unset when the option is absent, so the earlier value survives.
+    """
+
+    def value_or_suppress(value: object) -> object:
+        return value if defaults else argparse.SUPPRESS
+
+    parser.add_argument(
+        "--data", default=value_or_suppress(str(DEFAULT_DATA)), help="data directory"
+    )
+    parser.add_argument(
+        "--embedder", default=value_or_suppress("ollama"), choices=["ollama", "hashing"]
+    )
+    parser.add_argument("--model", default=value_or_suppress("nomic-embed-text"))
+    parser.add_argument("--chunk-size", type=int, default=value_or_suppress(512))
+    parser.add_argument("--overlap", type=int, default=value_or_suppress(64))
+    parser.add_argument(
+        "-k", type=int, default=value_or_suppress(5), help="documents retrieved per query"
+    )
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(prog="rag-eval", description=__doc__)
+    add_shared_options(parser, defaults=True)
     sub = parser.add_subparsers(dest="command", required=True)
 
-    run = sub.add_parser("run", parents=[common], help="evaluate the full configuration grid")
+    run = sub.add_parser("run", help="evaluate the full configuration grid")
+    add_shared_options(run, defaults=False)
     run.add_argument("--out", help="write the markdown report here")
     run.add_argument("--json", help="write raw results here")
     run.set_defaults(func=_run)
 
-    inspect = sub.add_parser("inspect", parents=[common], help="show what one query retrieved")
+    inspect = sub.add_parser("inspect", help="show what one query retrieved")
+    add_shared_options(inspect, defaults=False)
     inspect.add_argument("--query", required=True, help="query id, e.g. q01")
     inspect.set_defaults(func=_inspect)
 
